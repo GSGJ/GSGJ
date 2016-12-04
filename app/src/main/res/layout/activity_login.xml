@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.chenjunfan.gsgj.LoginActivity"
-    android:background="@mipmap/backgroud"
+    android:background="@mipmap/background"
     >
 
     <TextView
@@ -28,17 +28,18 @@
 
     <Button
         android:text="登录"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
         android:id="@+id/bt_lg_login"
-        android:background="#00FF33"
+        android:background="@drawable/bt_shap"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:onClick="PressLogin"
 
         />
 
@@ -54,7 +55,7 @@
         android:layout_marginBottom="49dp"
         android:layout_above="@+id/bt_lg_login"
         android:layout_alignStart="@+id/et_lg_id"
-        android:background="#50ffcc99"
+        android:background="@drawable/et_roundshap"
         />
 
     <EditText
@@ -64,7 +65,7 @@
         android:ems="10"
         android:id="@+id/et_lg_id"
         android:hint="请输入学号"
-        android:background="#50ffcc99"
+        android:background="@drawable/et_roundshap"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
         android:layout_above="@+id/et_lg_pw"
@@ -76,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bt_lg_regist"
-        android:textColor="#00FF33"
+        android:textColor="#FF9933"
         android:background="#00FFFFFF"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
