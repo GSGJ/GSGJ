@@ -7,11 +7,11 @@
 
     <ImageView
         android:id="@+id/imageview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:focusable="false"
         android:padding="3dp"
-        android:src="@drawable/tab_home_btn">
+        android:src="@drawable/bg_home_btn">
     </ImageView>
 
     <TextView
