@@ -10,14 +10,13 @@ import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button BTlogin,BTregist;
+    private Button BTlogin;
     private EditText ETid,ETpw;
 
 
     public void Init()
     {
         BTlogin = (Button) findViewById(R.id.bt_lg_login);
-        BTregist = (Button) findViewById(R.id.bt_lg_regist);
         ETid = (EditText) findViewById(R.id.et_lg_id);
         ETpw = (EditText) findViewById(R.id.et_lg_pw);
     }
