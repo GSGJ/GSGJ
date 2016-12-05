@@ -58,7 +58,13 @@ public class MainActivity extends FragmentActivity{
             //设置Tab按钮的背景
             mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selector_tab_background);
         }
+
+        mTabHost.setCurrentTab(1);
+
     }
+
+
+
 
     /**
      * 给Tab按钮设置图标和文字
