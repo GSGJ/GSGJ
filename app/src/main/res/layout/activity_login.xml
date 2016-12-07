@@ -22,7 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="30sp"
-        android:textColor="#FF9933"
+        android:textColor="@color/colorMain"
 
         />
 
