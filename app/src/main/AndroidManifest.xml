@@ -17,6 +17,10 @@
         </activity>
 
         <activity android:name=".MainActivity"/>
+        <activity android:name=".TushuActivity"/>
+        <activity android:name=".TiyuActivity"/>
+        <activity android:name=".JiaoshiActivity"/>
+        <activity android:name=".ShiyanActivity"/>
     </application>
 
 </manifest>
