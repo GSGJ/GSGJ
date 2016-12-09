@@ -9,10 +9,8 @@ import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
-/**
- * @author yangyu
- *	功能描述：自定义TabHost
- */
+
+
 public class MainActivity extends FragmentActivity{
     //定义FragmentTabHost对象
     private FragmentTabHost mTabHost;
