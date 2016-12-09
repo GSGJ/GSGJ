@@ -13,7 +13,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="图书馆"
+            android:text="实验室"
+            android:id="@+id/TV_sd_title"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
             android:textSize="30dp"
@@ -25,7 +26,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/tab_re_btn"
-            android:id="@+id/IV_ts_re"
+            android:id="@+id/IV_sd_re"
             android:paddingRight="30dp"
             android:layout_marginStart="20dp"
             android:layout_centerVertical="true"
@@ -35,7 +36,9 @@
     </RelativeLayout>
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:id="@+id/LV_sd_main"
+        ></ListView>
 
 
 </LinearLayout>

@@ -6,9 +6,7 @@ package com.example.chenjunfan.gsgj;
 
 
         import android.content.Intent;
-        import android.media.Image;
         import android.os.Bundle;
-        import android.support.annotation.Nullable;
         import android.support.v4.app.Fragment;
         import android.util.Log;
         import android.view.LayoutInflater;
@@ -46,25 +44,26 @@ public class FragmentPageMain extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Intent intent;
+        intent = new Intent(view.getContext(),SecondActivity.class);
         Log.d("Onclick","t");
         switch (view.getId()) {
             case R.id.IV_fm_tiyu:
-                intent=new Intent (view.getContext(),TiyuActivity.class);
+                intent.putExtra("id",view.getId());
                 Log.d("1","t");
                 startActivity(intent);
                 break;
             case R.id.IV_fm_tushu:
-                intent=new Intent (view.getContext(),TushuActivity.class);
+                intent.putExtra("id",view.getId());
                 Log.d("2","t");
                 startActivity(intent);
                 break;
             case R.id.IV_fm_shiyan:
-                intent=new Intent (view.getContext(),ShiyanActivity.class);
+                intent.putExtra("id",view.getId());
                 Log.d("3","t");
                 startActivity(intent);
                 break;
             case R.id.IV_fm_jiaoshi:
-                intent=new Intent (view.getContext(),JiaoshiActivity.class);
+                intent.putExtra("id",view.getId());
                 Log.d("4","t");
                 startActivity(intent);
                 break;
