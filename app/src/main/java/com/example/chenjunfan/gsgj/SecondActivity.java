@@ -38,7 +38,9 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         mainLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(SecondActivity.this, itemlist.get(i).toString(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SecondActivity.this,ThirdActivity.class);
+                intent.putExtra("id",itemlist.get(i));
+                startActivity(intent);
             }
         });
 
