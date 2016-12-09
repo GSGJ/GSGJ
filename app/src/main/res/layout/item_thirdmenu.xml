@@ -2,51 +2,23 @@
 
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/colorMain"
-        android:id="@+id/Test"
-        >
+    android:orientation="vertical"
+    >
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="实验室"
-            android:id="@+id/TV_sd_title"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="30dp"
-
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/tab_re_btn"
-            android:id="@+id/IV_sd_re"
-            android:paddingRight="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
 
 
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-
+        android:background="@drawable/bk_item"
         >
         <ImageView
             android:layout_width="70dp"
@@ -65,7 +37,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:textColor="@android:color/holo_red_dark"
-            android:id="@+id/TV_imt_num" />
+            android:id="@+id/TV_imt_num"
+            android:layout_below="@+id/TV_imt_title" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,4 +54,4 @@
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

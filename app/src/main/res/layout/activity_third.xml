@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:background="@color/colorMain"
         >
 
@@ -18,7 +18,6 @@
             android:layout_gravity="center"
             android:textColor="@android:color/white"
             android:textSize="30dp"
-
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
@@ -34,10 +33,11 @@
 
 
     </RelativeLayout>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/LV_sd_main"
+        android:id="@+id/LV_td_main"
         ></ListView>
 
 
