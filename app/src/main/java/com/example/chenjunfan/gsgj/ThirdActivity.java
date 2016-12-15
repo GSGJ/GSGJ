@@ -3,29 +3,35 @@ package com.example.chenjunfan.gsgj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import function.ItemBean;
 import function.MyAdapter;
+import function.ThirdMenuManager;
+import function.VenueTable;
 
 /**
  * Created by chenjunfan on 2016/12/9.
  */
 
-public class ThirdActivity extends Activity implements View.OnClickListener {
+public class ThirdActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
     ImageView reIV;
     TextView titleTV;
     ListView listView;
     MyAdapter myAdapter;
     String id;
-    private List<ItemBean> itemBeanList =new ArrayList<ItemBean>();
+    ThirdMenuManager tmManger = new ThirdMenuManager();
+    Activity activity = this;
 
 
     @Override
@@ -34,14 +40,15 @@ public class ThirdActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_third);
         Intent intent = getIntent();
         id=intent.getStringExtra("id");
-        Init(id);
+        init(id);
         reIV.setOnClickListener(this);
-        myAdapter = new MyAdapter(ThirdActivity.this,itemBeanList);
+        myAdapter = new MyAdapter(ThirdActivity.this,tmManger.getItemBeanList());
         listView.setAdapter(myAdapter);
+        listView.setOnItemClickListener(this);
 
     }
 
-    public void Init(String id)
+    public void init(String id)
     {
 
         reIV = (ImageView) findViewById(R.id.IV_td_re);
@@ -49,10 +56,7 @@ public class ThirdActivity extends Activity implements View.OnClickListener {
         listView = (ListView) findViewById(R.id.LV_td_main);
         titleTV.setText(id);
 
-        for(int i=0;i<10;i++)
-        {
-            itemBeanList.add(new ItemBean("东区"+id+i,i+""));
-        }
+        tmManger.getListdate(titleTV.getText().toString(),ThirdActivity.this,handler);
 
 
     }
@@ -66,4 +70,31 @@ public class ThirdActivity extends Activity implements View.OnClickListener {
                 break;
         }
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        new VenueTable().getDetial(tmManger.getItemBeanList().get(i).getTitle(),ThirdActivity.this,activity,handler,tmManger.getItemBeanList().get(i).getNum());
+
+    }
+
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            super.handleMessage(msg);
+
+            if(msg.obj.toString().equals("success"))
+            {
+                myAdapter.notifyDataSetChanged();
+            }
+            else {
+
+                String str = (String) msg.obj;
+
+                Toast.makeText(ThirdActivity.this, str, Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+    };
 }

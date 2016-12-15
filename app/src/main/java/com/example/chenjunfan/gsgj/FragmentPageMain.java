@@ -20,7 +20,7 @@ public class FragmentPageMain extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_main, null);
 
-        Init(view);
+        init(view);
         tiyuIV.setOnClickListener(this);
         tushuIV.setOnClickListener(this);
         shiyanIV.setOnClickListener(this);
@@ -33,7 +33,7 @@ public class FragmentPageMain extends Fragment implements View.OnClickListener {
 
 
 
-    public void Init(View view)
+    public void init(View view)
     {
         tiyuIV= (ImageView) view.findViewById(R.id.IV_fm_tiyu);
         tushuIV= (ImageView) view.findViewById(R.id.IV_fm_tushu);
@@ -44,26 +44,29 @@ public class FragmentPageMain extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Intent intent;
-        intent = new Intent(view.getContext(),SecondActivity.class);
+
         Log.d("Onclick","t");
         switch (view.getId()) {
             case R.id.IV_fm_tiyu:
-                intent.putExtra("id",view.getId());
+                intent = new Intent(view.getContext(),SecondActivity.class);
                 Log.d("1","t");
                 startActivity(intent);
                 break;
             case R.id.IV_fm_tushu:
-                intent.putExtra("id",view.getId());
+                intent = new Intent(view.getContext(),ThirdActivity.class);
+                intent.putExtra("id","图书馆");
                 Log.d("2","t");
                 startActivity(intent);
                 break;
             case R.id.IV_fm_shiyan:
-                intent.putExtra("id",view.getId());
+                intent = new Intent(view.getContext(),ThirdActivity.class);
+                intent.putExtra("id","实验室");
                 Log.d("3","t");
                 startActivity(intent);
                 break;
             case R.id.IV_fm_jiaoshi:
-                intent.putExtra("id",view.getId());
+                intent = new Intent(view.getContext(),ThirdActivity.class);
+                intent.putExtra("id","教室");
                 Log.d("4","t");
                 startActivity(intent);
                 break;

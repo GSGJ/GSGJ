@@ -3,15 +3,12 @@ package com.example.chenjunfan.gsgj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.health.PackageHealthStats;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,7 +30,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_second);
         Intent intent = getIntent();
         int id = intent.getIntExtra("id",0);
-        Init(id);
+        init();
         reIV.setOnClickListener(this);
         mainLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -46,15 +43,15 @@ public class SecondActivity extends Activity implements View.OnClickListener {
 
 
     }
-    public void Init(int id)
+    public void init()
     {
 
 
         reIV = (ImageView) findViewById(R.id.IV_sd_re);
         titleTV = (TextView) findViewById(R.id.TV_sd_title);
         mainLV = (ListView) findViewById(R.id.LV_sd_main);
+        titleTV.setText("体育馆");
 
-        if(id == R.id.IV_fm_tiyu) {
             itemlist = new ArrayList<String>();
 
             itemlist.add("足球");
@@ -68,23 +65,10 @@ public class SecondActivity extends Activity implements View.OnClickListener {
             mainLV.setAdapter(adapter);
         }
 
-        switch (id)
-        {
-            case R.id.IV_fm_jiaoshi:
-                titleTV.setText("教室");
-                break;
-            case R.id.IV_fm_shiyan:
-                titleTV.setText("实验室");
-                break;
-            case R.id.IV_fm_tiyu:
-                titleTV.setText("体育馆");
-                break;
-            case R.id.IV_fm_tushu:
-                titleTV.setText("图书馆");
-                break;
-        }
 
-    }
+
+
+
 
     @Override
     public void onClick(View view) {
