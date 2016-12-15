@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@color/backgroundGray"
+    >
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="选择可预约场地："
+        android:textSize="30dp"
+        android:textColor="@android:color/black"
+        />
+
+    <RadioGroup
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/RG_pops_num"
+        ></RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="确定预约"
+        android:textSize="30dp"
+        android:id="@+id/BT_pops_sure"
+        />
+
+</LinearLayout>
