@@ -32,7 +32,7 @@ public class FragmentPage3 extends Fragment implements View.OnClickListener{
         Intent intent = getActivity().getIntent();
         UsersTable user = null;
 
-        init(view,intent,user);
+        init(view,intent);
         dqyyBT.setOnClickListener(this);
         lsyyBT.setOnClickListener(this);
         logoutBT.setOnClickListener(this);
@@ -41,7 +41,7 @@ public class FragmentPage3 extends Fragment implements View.OnClickListener{
         return view;
     }
 
-    void init(View view, Intent intent, UsersTable user)
+    void init(View view, Intent intent)
     {
         touxiangIV = (ImageView) view.findViewById(R.id.IV_f3_touxiang);
         nameTV = (TextView) view.findViewById(R.id.TV_f3_name);

@@ -12,11 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import function.ItemBean;
-import function.MyAdapter;
+import function.MyListAdapter;
 import function.ThirdMenuManager;
 import function.VenueTable;
 
@@ -28,7 +24,7 @@ public class ThirdActivity extends Activity implements View.OnClickListener, Ada
     ImageView reIV;
     TextView titleTV;
     ListView listView;
-    MyAdapter myAdapter;
+    MyListAdapter myAdapter;
     String id;
     ThirdMenuManager tmManger = new ThirdMenuManager();
     Activity activity = this;
@@ -42,7 +38,7 @@ public class ThirdActivity extends Activity implements View.OnClickListener, Ada
         id=intent.getStringExtra("id");
         init(id);
         reIV.setOnClickListener(this);
-        myAdapter = new MyAdapter(ThirdActivity.this,tmManger.getItemBeanList());
+        myAdapter = new MyListAdapter(ThirdActivity.this,tmManger.getItemBeanList());
         listView.setAdapter(myAdapter);
         listView.setOnItemClickListener(this);
 

@@ -1,8 +1,13 @@
 package com.example.chenjunfan.gsgj;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,6 +45,17 @@ public class MainActivity extends FragmentActivity{
      * 初始化组件
      */
     private void initView(){
+        if (Build.VERSION.SDK_INT >= 23) {
+            int checkReadPermission = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CALENDAR);
+            int checkWritePermission = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_CALENDAR);
+            if (checkReadPermission != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_CALENDAR}, 1);
+            }
+            if (checkWritePermission != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_CALENDAR}, 2);
+            }
+        }
+
         //实例化布局对象
         layoutInflater = LayoutInflater.from(this);
 
