@@ -10,46 +10,41 @@
     >
 
 
-
-
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="90dp"
+        android:background="@drawable/bk_lanqiu"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/bk_item"
-        >
+        android:layout_alignParentStart="true">
+
         <ImageView
-            android:layout_width="70dp"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
             android:id="@+id/IV_imt_pic"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/pic_lanqiu"
             />
-
-        <TextView
-            android:text="可预约数：0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="@android:color/holo_red_dark"
-            android:id="@+id/TV_imt_num"
-            android:layout_below="@+id/TV_imt_title" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="慧园篮球场"
-            android:textSize="25dp"
+            android:textSize="28dp"
             android:textColor="@android:color/black"
             android:id="@+id/TV_imt_title"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/IV_imt_pic"
             android:layout_marginStart="21dp" />
+
+        <TextView
+            android:text="可预约数：0"
+            android:textSize="21dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:id="@+id/TV_imt_num"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

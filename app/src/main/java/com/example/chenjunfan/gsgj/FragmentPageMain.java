@@ -6,6 +6,7 @@ package com.example.chenjunfan.gsgj;
 
 
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.support.v4.app.Fragment;
         import android.util.Log;
@@ -13,9 +14,15 @@ package com.example.chenjunfan.gsgj;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.ImageView;
+        import android.widget.Toast;
+
+        import function.UsersTable;
+
+        import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentPageMain extends Fragment implements View.OnClickListener {
     private ImageView tiyuIV,tushuIV,shiyanIV,jiaoshiIV;
+    UsersTable user;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_main, null);
@@ -25,7 +32,6 @@ public class FragmentPageMain extends Fragment implements View.OnClickListener {
         tushuIV.setOnClickListener(this);
         shiyanIV.setOnClickListener(this);
         jiaoshiIV.setOnClickListener(this);
-
 
 
         return view;
@@ -39,6 +45,22 @@ public class FragmentPageMain extends Fragment implements View.OnClickListener {
         tushuIV= (ImageView) view.findViewById(R.id.IV_fm_tushu);
         shiyanIV= (ImageView) view.findViewById(R.id.IV_fm_shiyan);
         jiaoshiIV= (ImageView) view.findViewById(R.id.IV_fm_jiaoshi);
+
+        Intent intent = getActivity().getIntent();
+        user = (UsersTable) intent.getSerializableExtra("user");
+
+        try {
+            SharedPreferences pre = getActivity().getSharedPreferences("currentUser", MODE_PRIVATE);
+            SharedPreferences.Editor editor = pre.edit();
+            editor.putString("account", user.getUsers_account());
+            editor.commit();
+        }
+        catch (Exception e)
+        {
+
+                Toast.makeText(getContext(),"超级账号", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override

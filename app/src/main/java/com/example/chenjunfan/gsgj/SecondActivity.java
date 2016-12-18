@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import function.MySecondAdapter;
+
 /**
  * Created by chenjunfan on 2016/12/7.
  */
@@ -21,7 +23,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
     TextView titleTV;
     ListView mainLV;
     ArrayList<String> itemlist;
-    ArrayAdapter adapter;
+    MySecondAdapter adapter;
 
 
     @Override
@@ -61,7 +63,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
             itemlist.add("羽毛球");
             itemlist.add("乒乓球");
 
-            adapter = new ArrayAdapter(this, R.layout.item_secondmenu, R.id.TV_ims_title, itemlist);
+            adapter = new MySecondAdapter(this,itemlist);
             mainLV.setAdapter(adapter);
         }
 
