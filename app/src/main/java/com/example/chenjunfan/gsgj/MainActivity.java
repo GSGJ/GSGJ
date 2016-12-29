@@ -24,13 +24,13 @@ public class MainActivity extends FragmentActivity{
     private LayoutInflater layoutInflater;
 
     //定义数组来存放Fragment界面
-    private Class fragmentArray[] = {FragmentPage1.class,FragmentPageMain.class,FragmentPage3.class};
+    private Class fragmentArray[] = {FragmentPageMain.class,FragmentPage3.class};
 
     //定义数组来存放按钮图片
-    private int mImageViewArray[] = {R.drawable.tab_calendar_btn,R.drawable.tab_home_btn,R.drawable.tab_selfinfo_btn};
+    private int mImageViewArray[] = {R.drawable.tab_home_btn,R.drawable.tab_selfinfo_btn};
 
     //Tab选项卡的文字
-    private String mTextviewArray[] = {"日历", "主页", "个人"};
+    private String mTextviewArray[] = { "主页", "个人"};
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +75,7 @@ public class MainActivity extends FragmentActivity{
             mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selector_tab_background);
         }
 
-        mTabHost.setCurrentTab(1);
+        mTabHost.setCurrentTab(0);
 
     }
 

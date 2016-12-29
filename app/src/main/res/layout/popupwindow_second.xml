@@ -24,8 +24,9 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="确定预约"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:id="@+id/BT_pops_sure"
+        android:background="@drawable/bt_shap"
         />
 
 </LinearLayout>

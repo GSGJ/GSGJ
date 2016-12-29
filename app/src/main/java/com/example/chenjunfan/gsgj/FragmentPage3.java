@@ -48,23 +48,25 @@ public class FragmentPage3 extends Fragment implements View.OnClickListener{
         dqyyBT = (Button) view.findViewById(R.id.BT_f3_dqyy);
         lsyyBT = (Button) view.findViewById(R.id.BT_f3_lsyy);
         logoutBT = (Button) view.findViewById(R.id.BT_f3_logout);
-        reIV = (ImageView) view.findViewById(R.id.IV_f3_re);
 
         user = (UsersTable) intent.getSerializableExtra("user");
         if(user!=null)
-            nameTV.setText("学号："+user.getUsers_account()+" 姓名:"+user.getUsers_name());
+            nameTV.setText("学号："+user.getUsers_account()+"\n 姓名:"+user.getUsers_name());
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.IV_f3_re:
-                activity.finish();
-                break;
             case R.id.BT_f3_dqyy:
+                Intent intent = new Intent(getContext(),DingdanActivity.class);
+                intent.putExtra("type","当前预约");
+                startActivity(intent);
                 break;
             case R.id.BT_f3_lsyy:
+                Intent intent2 = new Intent(getContext(),DingdanActivity.class);
+                intent2.putExtra("type","历史预约");
+                startActivity(intent2);
                 break;
             case R.id.BT_f3_logout:
                 break;
