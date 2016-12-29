@@ -16,11 +16,11 @@ import java.util.List;
  * Created by chenjunfan on 2016/12/9.
  */
 
-public class MyListAdapter extends BaseAdapter {
+public class MyThirdAdapter extends BaseAdapter {
     private List<ItemBean> mList;
     private LayoutInflater mInfalter;
 
-    public MyListAdapter(Context context, List<ItemBean> list) {
+    public MyThirdAdapter(Context context, List<ItemBean> list) {
         mList = list;
         mInfalter = LayoutInflater.from(context);
     }

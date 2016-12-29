@@ -135,13 +135,14 @@ public class DetailActivity extends Activity implements View.OnClickListener, Po
                         checkflag1=true;
                         RadioButton tempButton = (RadioButton)popview.findViewById(checkedId); // 通过RadioGroup的findViewById方法，找到ID为checkedID的RadioButton
                         SimpleDateFormat df=new SimpleDateFormat("yyyy年MM月dd日");
+                        Date temptime = new Date();
                         try {
-                            currentdate=df.parse(tempButton.getText().toString());
+                            temptime=df.parse(tempButton.getText().toString());
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                         df = new SimpleDateFormat("yyyy-MM-dd");
-                        date = df.format(currentdate);
+                        date = df.format(temptime);
 
 
                     }
@@ -293,6 +294,7 @@ public class DetailActivity extends Activity implements View.OnClickListener, Po
                 {
                     pop.dismiss();
                     Toast.makeText(DetailActivity.this, "预约成功，已添加日历提醒，请到系统日历查看详情", Toast.LENGTH_LONG).show();
+                    finish();
                     Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {

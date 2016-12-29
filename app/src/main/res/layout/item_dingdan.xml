@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bk_item"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="馆室：东区篮球场\n场地编号：4"
+            android:gravity="center"
+            android:textColor="@color/colorMain"
+            android:id="@+id/TV_imd_venue"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约时间段:xxxx年xx月xx日 xx点xx分-xx点xx分"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/TV_imd_yytime"
+            android:textSize="16dp"
+
+            android:paddingTop="5dp"
+
+            android:layout_below="@+id/TV_imd_venue"
+
+            android:layout_marginEnd="42dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单生成时间:xxxx年xx月xx日 xx点xx分xx秒"
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/TV_imd_ddtime"
+            android:layout_below="@+id/TV_imd_yytime"
+            android:layout_centerHorizontal="true"
+            android:textSize="15dp"
+            android:paddingTop="5dp"
+
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

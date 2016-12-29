@@ -62,6 +62,7 @@
         android:text="查询可预约场地"
         android:textSize="20dp"
         android:id="@+id/BT_popf_next"
+        android:background="@drawable/bt_shap"
         />
 
 </LinearLayout>
