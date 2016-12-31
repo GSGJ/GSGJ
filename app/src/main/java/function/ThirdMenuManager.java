@@ -18,6 +18,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -129,35 +131,43 @@ public class ThirdMenuManager {
         AsyncTask asyncTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-
+                HttpURLConnection connection = null;
                 try {
                     String Url;
-                    Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/specificVenueServlet" + "?venueType=" + str;
+                    URLEncoder.encode(str,"GBK");
+                    Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/specificVenueServlet" + "?venueType="+URLEncoder.encode(str,"UTF-8"); ;
                     Log.i("url", Url);
+                    Log.d("decode", URLDecoder.decode(Url,"UTF-8"));
                     URL url = new URL(Url);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestProperty("Accept-Charset", "UTF-8");
-                    conn.setRequestProperty("contentType", "UTF-8");
-                    conn.setReadTimeout(1000);
-                    conn.setConnectTimeout(3000);
-                    InputStreamReader reader = new InputStreamReader(conn.getInputStream(), "UTF-8");
-                    BufferedReader br = new BufferedReader(reader);
-                    String str = br.readLine();
-                    Log.d("InputStream", str);
-                    if (str.equals("null_error")) {
+                    connection = (HttpURLConnection)url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setRequestProperty("Accept-Charset", "UTF-8");
+                    connection.setRequestProperty("contentType", "UTF-8");
+                    connection.setReadTimeout(1000);
+                    connection.setConnectTimeout(3000);
+                    InputStream in = connection.getInputStream();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while((line = br.readLine())!=null)
+                    {
+                        response.append(line);
+                    }
+                    Log.d("InputStream", response.toString());
+                    if (response.toString().equals("null_error")) {
                         Message msg = new Message();
                         msg.obj = "账户不存在！";
                         prodialog.cancel();
                         handler.sendMessage(msg);
 
-                    } else if (str.equals("not_found")) {
+                    } else if (response.toString().equals("not_found")) {
                         Message msg = new Message();
                         msg.obj = "密码错误！";
                         prodialog.cancel();
                         handler.sendMessage(msg);
                     } else {
                         Gson gson = new Gson();
-                        itemList = gson.fromJson(str, new TypeToken<List<Map<String, String>>>() {
+                        itemList = gson.fromJson(response.toString(), new TypeToken<List<Map<String, String>>>() {
                         }.getType());
                         for (int i = 0; i < itemList.size(); i++) {
                             itemBeanList.add(new ItemBean(itemList.get(i).get("venueName"), itemList.get(i).get("bookNumber")));
@@ -174,6 +184,9 @@ public class ThirdMenuManager {
                     msg.obj = "获取数据失败，请检查网络设置或稍后再试";
                     handler.sendMessage(msg);
                     prodialog.cancel();
+                }
+                finally {
+                    connection.disconnect();
                 }
 
 

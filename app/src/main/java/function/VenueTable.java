@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 public class VenueTable implements Serializable {
 	private int venue_id; //自增馆室id号
@@ -121,7 +122,7 @@ public class VenueTable implements Serializable {
 			public void run() {
 				try {
 					String Url;
-					Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/venueInfoServlet" + "?venueName=" + name;
+					Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/venueInfoServlet" + "?venueName=" + URLEncoder.encode(name,"UTF-8");
 					Log.i("url", Url);
 					URL url = new URL(Url);
 					URLConnection conn = url.openConnection();
