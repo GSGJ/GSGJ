@@ -20,7 +20,7 @@ public class FragmentPage3 extends Fragment implements View.OnClickListener{
 
     ImageView touxiangIV,reIV;
     TextView nameTV;
-    Button dqyyBT,lsyyBT,logoutBT;
+    Button dqyyBT,lsyyBT,logoutBT,tongjiBT;
     Activity activity = getActivity();
 
     UsersTable user;
@@ -36,6 +36,7 @@ public class FragmentPage3 extends Fragment implements View.OnClickListener{
         dqyyBT.setOnClickListener(this);
         lsyyBT.setOnClickListener(this);
         logoutBT.setOnClickListener(this);
+        tongjiBT.setOnClickListener(this);
 
 
         return view;
@@ -48,6 +49,7 @@ public class FragmentPage3 extends Fragment implements View.OnClickListener{
         dqyyBT = (Button) view.findViewById(R.id.BT_f3_dqyy);
         lsyyBT = (Button) view.findViewById(R.id.BT_f3_lsyy);
         logoutBT = (Button) view.findViewById(R.id.BT_f3_logout);
+        tongjiBT = (Button) view.findViewById(R.id.BT_f3_statistics);
 
         user = (UsersTable) intent.getSerializableExtra("user");
         if(user!=null)
@@ -68,6 +70,9 @@ public class FragmentPage3 extends Fragment implements View.OnClickListener{
                 intent2.putExtra("type","历史预约");
                 startActivity(intent2);
                 break;
+            case R.id.BT_f3_statistics:
+                Intent intent3 = new Intent(getContext(),StatisticsActivity.class);
+                startActivity(intent3);
             case R.id.BT_f3_logout:
                 break;
 

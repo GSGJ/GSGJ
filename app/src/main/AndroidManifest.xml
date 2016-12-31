@@ -45,6 +45,7 @@
         <activity android:name=".ThirdActivity"/>
         <activity android:name=".DetailActivity"/>
         <activity android:name=".DingdanActivity"/>
+        <activity android:name=".StatisticsActivity"/>
 
     </application>
 

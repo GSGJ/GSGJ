@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,15 +35,17 @@ public class DetailManger {
         prodialog.setMessage("正在查询可用场馆");
         prodialog.show();
 
+
         final Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
+                URLConnection conn = null;
                 try {
                     String Url;
-                    Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/GetAreaServlet" + "?date="+date+"&time="+time+"&venuename="+genname ;
+                    Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/GetAreaServlet" + "?date="+date+"&time="+time+"&venuename="+ URLEncoder.encode(genname,"UTF-8") ;
                     Log.i("url", Url);
                     URL url = new URL(Url);
-                    URLConnection conn = url.openConnection();
+                    conn = url.openConnection();
                     conn.setRequestProperty("Accept-Charset", "UTF-8");
                     conn.setRequestProperty("contentType", "UTF-8");
                     conn.setReadTimeout(1000);
@@ -105,7 +108,7 @@ public class DetailManger {
             public void run() {
                 try {
                     String Url;
-                    Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/ReserveServlet" + "?account="+account+"&venuename="+venue+"&date="+date+"&time="+time+"&area="+num ;
+                    Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/ReserveServlet" + "?account="+account+"&venuename="+URLEncoder.encode(venue,"UTF-8")+"&date="+date+"&time="+time+"&area="+num ;
                     Log.i("url", Url);
                     URL url = new URL(Url);
                     URLConnection conn = url.openConnection();

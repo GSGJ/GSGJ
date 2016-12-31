@@ -32,7 +32,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="注销登录"
-        android:layout_below="@+id/BT_f3_lsyy"
+        android:layout_below="@+id/BT_f3_statistics"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
         android:id="@+id/BT_f3_logout"
@@ -59,6 +59,16 @@
         android:textColor="@color/colorMain"
         android:id="@+id/BT_f3_lsyy"
         android:layout_below="@+id/BT_f3_dqyy"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="查看个人数据统计"
+        android:background="@android:color/white"
+        android:textColor="@color/colorMain"
+        android:id="@+id/BT_f3_statistics"
+        android:layout_below="@+id/BT_f3_lsyy"
         android:layout_alignParentStart="true" />
 
 
