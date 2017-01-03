@@ -4,6 +4,16 @@ public class PersonalInfoTable {
 	public String venueName;
 	public String date;
 	public String time;
+	public String num;
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
 	public String now_time; //生成定单 包括日期和时间
 	public String getVenueName() {
 		return venueName;

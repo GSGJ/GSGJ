@@ -83,6 +83,7 @@ public class UsersTable implements Serializable {
         prodialog.setIndeterminate(true);
         prodialog.setCancelable(false);
         prodialog.setMessage("正在登录");
+        prodialog.show();
 
         if(idEditText.getText().toString().equals(""))
         {
@@ -114,7 +115,7 @@ public class UsersTable implements Serializable {
                         passwd = passwordEditText.getText().toString();
                         try {
                             String Url;
-                            Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/LoginServlet" + "?account=" + id + "&password=" + passwd;
+                            Url = "http://" + context.getResources().getText(R.string.ip_address) + "/VenueManager/LoginServlet" + "?account=" + id + "&password=" + passwd;
                             Log.i("url", Url);
                             URL url = new URL(Url);
                             URLConnection conn = url.openConnection();

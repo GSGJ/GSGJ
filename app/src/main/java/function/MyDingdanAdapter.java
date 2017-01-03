@@ -91,7 +91,7 @@ public class MyDingdanAdapter extends BaseAdapter {
         yytime.setTime(yytime.getTime()+2*60*60*1000);
         str = str+yyformat2.format(yytime);
         viewHolder.yytimeTV.setText(str);
-        viewHolder.venueTV.setText(itemList.get(i).getVenueName());
+        viewHolder.venueTV.setText(itemList.get(i).getVenueName()+"\n场地编号："+itemList.get(i).getNum());
 
 
 

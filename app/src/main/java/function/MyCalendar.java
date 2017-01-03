@@ -147,7 +147,7 @@ public class MyCalendar {
         }
     }
 
-    public static void deleteCalendarEvent(Context context,String title){//根据设置的title来查找并删除
+    public static void deleteCalendarEvent(Context context,String title,String description){//根据设置的title来查找并删除
 
 
         Cursor eventCursor = context.getContentResolver().query(Uri.parse(CALANDER_EVENT_URL), null, null, null, null);
@@ -158,12 +158,17 @@ public class MyCalendar {
                 //遍历所有事件，找到title跟需要查询的title一样的项
                 for (eventCursor.moveToFirst(); !eventCursor.isAfterLast(); eventCursor.moveToNext()) {
                     String eventTitle = eventCursor.getString(eventCursor.getColumnIndex("title"));
-                    if (!TextUtils.isEmpty(title) && title.equals(eventTitle)) {
+                    //String eventDescription = eventCursor.getString(eventCursor.getColumnIndex("description"));
+                    Log.i("eventtitle", eventTitle);
+                   // Log.i("eventdescription", eventDescription);
+                   // if (!TextUtils.isEmpty(title) && title.equals(eventTitle)&&!TextUtils.isEmpty(description)&&description.equals(eventDescription)) {
+                    if (!TextUtils.isEmpty(title) && title.equals(eventTitle)){
                         int id = eventCursor.getInt(eventCursor.getColumnIndex(CalendarContract.Calendars._ID));//取得id
                         Uri deleteUri = ContentUris.withAppendedId(Uri.parse(CALANDER_EVENT_URL), id);
                         int rows = context.getContentResolver().delete(deleteUri, null, null);
                         if (rows == -1) {
                             //事件删除失败
+                            Log.i("calendar", "删除失败");
                             return;
                         }
                     }

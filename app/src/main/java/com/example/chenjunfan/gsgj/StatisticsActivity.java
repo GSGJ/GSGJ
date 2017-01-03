@@ -12,23 +12,36 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
+import function.GennameAndNumAndroid;
+
 public class StatisticsActivity extends Activity {
 
     private PieChart mChart;
+    private String[] name;
+    private float[] num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
+        Intent intent = getIntent();
+        name=intent.getStringArrayExtra("name");
+        num=intent.getFloatArrayExtra("num");
+
         mChart = (PieChart) findViewById(R.id.chart);
-        PieData mPieData = getPieData(4, 100,10,20,30,40);
-        showChart(mChart, mPieData);
+        if(name != null&&num!=null) {
+            PieData mPieData = getPieData(4,num[0]+num[1]+num[2]+num[3],num[0],num[1],num[2],num[3],name[0],name[1],name[2],name[3]);
+            showChart(mChart, mPieData);
+        }
     }
 
     private void showChart(PieChart pieChart, PieData pieData) {
@@ -66,7 +79,7 @@ public class StatisticsActivity extends Activity {
 
 //      mChart.setOnAnimationListener(this);
 
-        pieChart.setCenterText("个人预定历史统计图\n（单位：百分比）");  //饼状图中间的文字
+        pieChart.setCenterText("个人预定历史统计图\n（单位：%）");  //饼状图中间的文字
 
         //设置数据
         pieChart.setData(pieData);
@@ -88,15 +101,15 @@ public class StatisticsActivity extends Activity {
      * @param count 分成几部分
      * @param range
      */
-    private PieData getPieData(int count, float range,int num1,int num2,int num3,int num4) {
+    private PieData getPieData(int count, float range,float num1,float num2,float num3,float num4,String str1,String str2,String str3,String str4) {
 
         ArrayList<String> xValues = new ArrayList<String>();  //xVals用来表示每个饼块上的内容
 
 
-        xValues.add("体育馆");
-        xValues.add("图书馆");
-        xValues.add("实验室");
-        xValues.add("教室");//饼块上显示成Quarterly1, Quarterly2, Quarterly3, Quarterly4
+        xValues.add(str1);
+        xValues.add(str2);
+        xValues.add(str3);
+        xValues.add(str4);//饼块上显示成Quarterly1, Quarterly2, Quarterly3, Quarterly4
 
         ArrayList<Entry> yValues = new ArrayList<Entry>();  //yVals用来表示封装每个饼块的实际数据
 
@@ -105,10 +118,10 @@ public class StatisticsActivity extends Activity {
          * 将一个饼形图分成四部分， 四部分的数值比例为14:14:34:38
          * 所以 14代表的百分比就是14%
          */
-        int quarterly1 = 10;
-        int quarterly2 = 40;
-        int quarterly3 = 20;
-        int quarterly4 = 30;
+        float quarterly1 = num1;
+        float quarterly2 = num2;
+        float quarterly3 = num3;
+        float quarterly4 = num4;
 
         yValues.add(new Entry(quarterly1, 0));
         yValues.add(new Entry(quarterly2, 1));
