@@ -39,6 +39,7 @@
         android:layout_height="150dp"
         android:background="@drawable/bg_tiyu"
         android:id="@+id/FL_dt_pic"
+        android:scaleType="fitXY"
         >
 
         <RelativeLayout
@@ -63,6 +64,7 @@
                 android:id="@+id/TV_dt_title"
                 android:text="东区篮球馆"
                 android:textSize="30dp"
+                android:textColor="@android:color/white"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true" />
 
@@ -83,10 +85,10 @@
     <TextView
         android:id="@+id/TV_dt_notice"
         android:layout_width="match_parent"
-        android:layout_height="155dp"
+        android:layout_height="160dp"
         android:text="公告：今天下雨，明天放假！哈哈哈哈哈哈哈哈哈哇哇哇哇！蛇精病！"
         android:textColor="@android:color/holo_red_light"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:gravity="center"
         />
 

@@ -16,11 +16,11 @@ import java.util.List;
  * Created by chenjunfan on 2016/12/9.
  */
 
-public class MyThirdAdapter extends BaseAdapter {
-    private List<ItemBean> mList;
+public class MyRmAdapter extends BaseAdapter {
+    private List<RmItemBean> mList;
     private LayoutInflater mInfalter;
 
-    public MyThirdAdapter(Context context, List<ItemBean> list) {
+    public MyRmAdapter(Context context, List<RmItemBean> list) {
         mList = list;
         mInfalter = LayoutInflater.from(context);
     }
@@ -50,6 +50,7 @@ public class MyThirdAdapter extends BaseAdapter {
             viewHolder.numTV = (TextView) convertView.findViewById(R.id.TV_imt_num);
             viewHolder.titleTV = (TextView) convertView.findViewById(R.id.TV_imt_title);
             viewHolder.picTV = (ImageView) convertView.findViewById(R.id.IV_imt_pic);
+            viewHolder.rmTV = (TextView) convertView.findViewById(R.id.TV_imt_remennum);
             convertView.setTag(viewHolder);
 
         }
@@ -57,9 +58,10 @@ public class MyThirdAdapter extends BaseAdapter {
         {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        ItemBean bean = mList.get(position);
+        RmItemBean bean = mList.get(position);
         viewHolder.titleTV.setText(bean.getTitle());
         viewHolder.numTV.setText("可预约数："+bean.getNum());
+        viewHolder.rmTV.setText("月预约数："+bean.getRemennum());
         if(bean.getTitle().indexOf("教室")!=-1||bean.getTitle().indexOf("自习室")!=-1)
         {
             viewHolder.picTV.setImageResource(R.drawable.pic_jiaoshi);
@@ -80,7 +82,7 @@ public class MyThirdAdapter extends BaseAdapter {
         {
             viewHolder.picTV.setImageResource(R.drawable.pic_shiyan);
         }
-        else if(bean.getTitle().indexOf("研讨")!=-1||bean.getTitle().indexOf("图书馆")!=-1)
+        else if(bean.getTitle().indexOf("研讨")!=-1||bean.getTitle().indexOf("图书")!=-1)
         {
             viewHolder.picTV.setImageResource(R.drawable.pic_tushu);
         }
@@ -103,7 +105,7 @@ public class MyThirdAdapter extends BaseAdapter {
         return convertView;
     }
     class ViewHolder{
-        public TextView titleTV,numTV;
+        public TextView titleTV,numTV,rmTV;
         public ImageView picTV;
     }
 }

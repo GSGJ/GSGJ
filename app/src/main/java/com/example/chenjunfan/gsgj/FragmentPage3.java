@@ -6,6 +6,8 @@ package com.example.chenjunfan.gsgj;
         import android.app.Activity;
         import android.content.Intent;
         import android.os.Bundle;
+        import android.os.Handler;
+        import android.os.Message;
         import android.support.v4.app.Fragment;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -13,7 +15,9 @@ package com.example.chenjunfan.gsgj;
         import android.widget.Button;
         import android.widget.ImageView;
         import android.widget.TextView;
+        import android.widget.Toast;
 
+        import function.PieChartManger;
         import function.UsersTable;
 
 public class FragmentPage3 extends Fragment implements View.OnClickListener{
@@ -71,11 +75,25 @@ public class FragmentPage3 extends Fragment implements View.OnClickListener{
                 startActivity(intent2);
                 break;
             case R.id.BT_f3_statistics:
-                Intent intent3 = new Intent(getContext(),StatisticsActivity.class);
-                startActivity(intent3);
+                PieChartManger pieChartManger = new PieChartManger(getActivity(),getContext(),handler,user.getUsers_account());
+                pieChartManger.getdate();
+                break;
             case R.id.BT_f3_logout:
+                Intent intent4 = new Intent(getContext(),LoginActivity.class);
+                startActivity(intent4);
+                getActivity().finish();
                 break;
 
         }
     }
+
+    Handler handler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(msg.obj!="success")
+            Toast.makeText(getContext(),msg.obj.toString(), Toast.LENGTH_SHORT).show();
+        }
+    };
 }

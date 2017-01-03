@@ -82,6 +82,26 @@ public class DetailActivity extends Activity implements View.OnClickListener, Po
         picFL = (FrameLayout) findViewById(R.id.FL_dt_pic);
         reIV = (ImageView) findViewById(R.id.IV_dt_re);
 
+        if(venue.getVenue_name().indexOf("教室")!=-1||venue.getVenue_name().indexOf("自习室")!=-1||venue.getVenue_name().indexOf("号楼")!=-1)
+        {
+           picFL.setBackgroundResource(R.drawable.bg_jiaoshi);
+        }
+        else if(venue.getVenue_name().indexOf("篮球")!=-1||venue.getVenue_name().indexOf("足球")!=-1||
+        venue.getVenue_name().indexOf("排球")!=-1||venue.getVenue_name().indexOf("乒乓球")!=-1||
+        venue.getVenue_name().indexOf("羽毛球")!=-1||venue.getVenue_name().indexOf("网球")!=-1)
+        {
+            picFL.setBackgroundResource(R.drawable.bg_tiyu);
+        }
+        else if(venue.getVenue_name().indexOf("研讨室")!=-1||venue.getVenue_name().indexOf("图书馆")!=-1)
+        {
+            picFL.setBackgroundResource(R.drawable.bg_tushu);
+        }
+        else if(venue.getVenue_name().indexOf("实验室")!=-1||venue.getVenue_name().indexOf("机房")!=-1)
+        {
+            picFL.setBackgroundResource(R.drawable.bg_shiyan);
+        }
+
+
         totalnumTV.setText("总场馆数："+venue.getVenue_sumarea());
         titleTV.setText(venue.getVenue_name());
         locTV.setText("位置："+venue.getVenue_addr());
@@ -298,25 +318,50 @@ public class DetailActivity extends Activity implements View.OnClickListener, Po
                     Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
+                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                             if(time.equals("8:00-10:00"))
                             {
-                                currentdate.setTime(currentdate.getTime()+8*60*60*1000);
+                                try {
+                                    currentdate.setTime(df.parse(date).getTime()+8*60*60*1000);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                    Log.d("DetailActivity", "日历时间转换错误");
+                                }
                             }
                             else if (time.equals("10:00-12:00"))
                             {
-                                currentdate.setTime(currentdate.getTime()+10*60*60*1000);
+                                try {
+                                    currentdate.setTime(df.parse(date).getTime()+10*60*60*1000);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                    Log.d("DetailActivity", "日历时间转换错误");
+
+                                }
                             }
                             else if (time.equals("14:00-16:00"))
                             {
-                                currentdate.setTime(currentdate.getTime()+14*60*60*1000);
+                                try {
+                                    currentdate.setTime(df.parse(date).getTime()+14*60*60*1000);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                    Log.d("DetailActivity", "日历时间转换错误");
+
+                                }
                             }
                             else if (time.equals("16:00-18:00"))
                             {
-                                currentdate.setTime(currentdate.getTime()+16*60*60*1000);
+                                try {
+                                    currentdate.setTime(df.parse(date).getTime()+16*60*60*1000);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                    Log.d("DetailActivity", "日历时间转换错误");
+
+                                }
                             }
 
                             MyCalendar myCalendar = new MyCalendar();
                             myCalendar.addCalendarEvent(DetailActivity.this,"预约了"+titleTV.getText(),"馆室管家提醒您，您已预约了"+date+" "+time+"的"+titleTV.getText()+" 场地编号为:"+num+",请按时到场签到哟~ 我们将会在1个小时前闹钟提醒您，若要删除闹钟请编辑日历项",currentdate);
+                            Log.i("增加日历", "馆室管家提醒您，您已预约了"+date+" "+time+"的"+titleTV.getText()+" 场地编号为:"+num+",请按时到场签到哟~ 我们将会在1个小时前闹钟提醒您，若要删除闹钟请编辑日历项");
                             Intent i = new Intent();
                             ComponentName cn = null;
                             if(Integer.parseInt (Build.VERSION.SDK ) >=8){

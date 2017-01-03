@@ -116,13 +116,14 @@ public class VenueTable implements Serializable {
 		prodialog.setIndeterminate(true);
 		prodialog.setCancelable(false);
 		prodialog.setMessage("正在刷新~");
+		prodialog.show();
 
 		final Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
 					String Url;
-					Url = "http://" + context.getResources().getText(R.string.ip_address) + ":8080/VenueManager/venueInfoServlet" + "?venueName=" + URLEncoder.encode(name,"UTF-8");
+					Url = "http://" + context.getResources().getText(R.string.ip_address) + "/VenueManager/venueInfoServlet" + "?venueName=" + URLEncoder.encode(name,"UTF-8");
 					Log.i("url", Url);
 					URL url = new URL(Url);
 					URLConnection conn = url.openConnection();

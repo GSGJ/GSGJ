@@ -6,7 +6,7 @@
     >
 
 
-    <com.example.chenjunfan.gsgj.RoundImageView
+    <function.RoundImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/bg_jiaoshi"
@@ -35,12 +35,13 @@
         android:layout_below="@+id/BT_f3_statistics"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
+        android:background="@drawable/bt_shap"
         android:id="@+id/BT_f3_logout"
         />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:text="查看当前预约"
         android:id="@+id/BT_f3_dqyy"
         android:textColor="@color/colorMain"
@@ -53,7 +54,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:text="查看历史预约"
         android:background="@android:color/white"
         android:textColor="@color/colorMain"
@@ -63,7 +64,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:text="查看个人数据统计"
         android:background="@android:color/white"
         android:textColor="@color/colorMain"

@@ -12,11 +12,18 @@
         android:textColor="@android:color/black"
         />
 
-    <RadioGroup
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/RG_pops_num"
-        ></RadioGroup>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp">
+        <RadioGroup
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/RG_pops_num"
+            ></RadioGroup>
+
+    </ScrollView>
+
+
 
     <Button
         android:layout_width="wrap_content"
