@@ -39,7 +39,7 @@ public class StatisticsActivity extends Activity {
 
         mChart = (PieChart) findViewById(R.id.chart);
         if(name != null&&num!=null) {
-            PieData mPieData = getPieData(4,num[0]+num[1]+num[2]+num[3],num[0],num[1],num[2],num[3],name[0],name[1],name[2],name[3]);
+            PieData mPieData = getPieData(4,num,name);
             showChart(mChart, mPieData);
         }
     }
@@ -99,17 +99,17 @@ public class StatisticsActivity extends Activity {
     /**
      *
      * @param count 分成几部分
-     * @param range
+     *
      */
-    private PieData getPieData(int count, float range,float num1,float num2,float num3,float num4,String str1,String str2,String str3,String str4) {
+    private PieData getPieData(int count,float[] num,String[] name) {
 
         ArrayList<String> xValues = new ArrayList<String>();  //xVals用来表示每个饼块上的内容
 
-
-        xValues.add(str1);
-        xValues.add(str2);
-        xValues.add(str3);
-        xValues.add(str4);//饼块上显示成Quarterly1, Quarterly2, Quarterly3, Quarterly4
+//
+//        xValues.add(str1);
+//        xValues.add(str2);
+//        xValues.add(str3);
+//        xValues.add(str4);//饼块上显示成Quarterly1, Quarterly2, Quarterly3, Quarterly4
 
         ArrayList<Entry> yValues = new ArrayList<Entry>();  //yVals用来表示封装每个饼块的实际数据
 
@@ -118,15 +118,22 @@ public class StatisticsActivity extends Activity {
          * 将一个饼形图分成四部分， 四部分的数值比例为14:14:34:38
          * 所以 14代表的百分比就是14%
          */
-        float quarterly1 = num1;
-        float quarterly2 = num2;
-        float quarterly3 = num3;
-        float quarterly4 = num4;
+//        float quarterly1 = num1;
+//        float quarterly2 = num2;
+//        float quarterly3 = num3;
+//        float quarterly4 = num4;
 
-        yValues.add(new Entry(quarterly1, 0));
-        yValues.add(new Entry(quarterly2, 1));
-        yValues.add(new Entry(quarterly3, 2));
-        yValues.add(new Entry(quarterly4, 3));
+//        yValues.add(new Entry(quarterly1, 0));
+//        yValues.add(new Entry(quarterly2, 1));
+//        yValues.add(new Entry(quarterly3, 2));
+//        yValues.add(new Entry(quarterly4, 3));
+        for(int i=0;i<num.length;i++)
+        {
+            if(num[i]==0)
+                continue;
+            xValues.add(name[i]);
+            yValues.add(new Entry(num[i],i));
+        }
 
         //y轴的集合
         PieDataSet pieDataSet = new PieDataSet(yValues, ""/*显示在比例图上*/);

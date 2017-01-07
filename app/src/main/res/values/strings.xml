@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">GSGJ</string>
-    <string name="ip_address">1b63p31307.51mypc.cn</string>
+    <string name="ip_address">192.168.43.231:8080</string>
 </resources>
